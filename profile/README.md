@@ -6,3 +6,6 @@
   <a href="https://github.com/IBK-Mobile-Teams">
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&random=false&width=435&lines=Selamat+Pagi+Mobile+Developer+Teams!;Good+Morning+Mobile+Developer+Teams!;%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94+annyeonghaseyoo!" alt="Typing SVG" /></a>
 </p>
+
+### Documentation
+- [Error Dictionary](https://github.com/IBK-Mobile-Teams/.github/blob/error-dictionrary-blocking-error/profile/Error%20Dictionary.md)
