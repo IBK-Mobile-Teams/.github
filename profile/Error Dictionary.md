@@ -58,6 +58,7 @@ The error is that there is a problem with the server or there are maintenance sc
 | MAINTENANCE | error_F006 | (W-Matrix) Fail to download Refresh Update File. |
 | MAINTENANCE | error_F007 | (W-Matrix) WebSquare License is not valid. |
 | MAINTENANCE | error_F009 | (W-Matrix) The app cannot be run with the current version of %s. Please update to the latest version on the Play Store and restart. |
+| MAINTENANCE | error_F010 | (W-Matrix) Fail to unzip due to insufficient storage space. |
 | MAINTENANCE | error_W1004 | (W-Matrix) W-Matrix License is not valid. |
 | MAINTENANCE | error_W1005 | (W-Matrix) Fail to create WebView. |
 | MAINTENANCE | error_O1000 | (W-Matrix) An error occurred while setting offline mode. |
