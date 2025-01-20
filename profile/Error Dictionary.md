@@ -43,26 +43,32 @@ The error is that there is a problem with the server or there are maintenance sc
 | ------ | ------ | ------ |
 | MAINTENANCE | 500 | Maintenenace Internal API |
 | SERVER_ERROR | 503 | Internal Server Error |
-| MAINTENANCE | error_N000 | (W-Matrix) Fail to get config from server. Please try again. |
-| MAINTENANCE | error_N001 | (W-Matrix) No response from server. Please try again. |
-| MAINTENANCE | error_N002 | (W-Matrix) App ID is different from server. |
-| MAINTENANCE | error_N003 | (W-Matrix) Fail to generate WebSquare JS files. |
-| MAINTENANCE | error_N004 | (W-Matrix) Server Error is occurred. |
-| MAINTENANCE | error_N005 | (W-Matrix) Failed to start W-Matrix. |
-| MAINTENANCE | error_N006 | (W-Matrix) Server list configuration failed. |
-| MAINTENANCE | error_F001 | (W-Matrix) Fail to unzip Engine zip file. |
-| MAINTENANCE | error_F002 | (W-Matrix) Fail to unzip Resource zip file. |
-| MAINTENANCE | error_F003 | (W-Matrix) Fail to unzip Custom Update zip file. |
-| MAINTENANCE | error_F004 | (W-Matrix) Fail to unzip Refresh Update zip file. |
-| MAINTENANCE | error_F005 | (W-Matrix) Refresh Update Hash Table is not valid. |
-| MAINTENANCE | error_F006 | (W-Matrix) Fail to download Refresh Update File. |
-| MAINTENANCE | error_F007 | (W-Matrix) WebSquare License is not valid. |
-| MAINTENANCE | error_F009 | (W-Matrix) The app cannot be run with the current version of %s. Please update to the latest version on the Play Store and restart. |
-| MAINTENANCE | error_F010 | (W-Matrix) Fail to unzip due to insufficient storage space. |
-| MAINTENANCE | error_W1004 | (W-Matrix) W-Matrix License is not valid. |
-| MAINTENANCE | error_W1005 | (W-Matrix) Fail to create WebView. |
-| MAINTENANCE | error_O1000 | (W-Matrix) An error occurred while setting offline mode. |
-| MAINTENANCE | error_O1001 | (W-Matrix) There is no W-Matrix setup to use offline mode. |
+
+### W-Matrix
+The error is that there is a problem with the W-Matrix Library
+
+| NAME | ERROR CODE | Desc |
+| ------ | ------ | ------ |
+| FAILED_LOAD_DATA | error_N000 | (W-Matrix) Fail to get config from server. Please try again. |
+| FAILED_LOAD_DATA | error_N001 | (W-Matrix) No response from server. Please try again. |
+| FAILED_LOAD_DATA | error_N002 | (W-Matrix) App ID is different from server. |
+| FAILED_LOAD_DATA | error_N003 | (W-Matrix) Fail to generate WebSquare JS files. |
+| FAILED_LOAD_DATA | error_N004 | (W-Matrix) Server Error is occurred. |
+| FAILED_LOAD_DATA | error_N005 | (W-Matrix) Failed to start W-Matrix. |
+| FAILED_LOAD_DATA | error_N006 | (W-Matrix) Server list configuration failed. |
+| FAILED_LOAD_DATA | error_F001 | (W-Matrix) Fail to unzip Engine zip file. |
+| FAILED_LOAD_DATA | error_F002 | (W-Matrix) Fail to unzip Resource zip file. |
+| FAILED_LOAD_DATA | error_F003 | (W-Matrix) Fail to unzip Custom Update zip file. |
+| FAILED_LOAD_DATA | error_F004 | (W-Matrix) Fail to unzip Refresh Update zip file. |
+| FAILED_LOAD_DATA | error_F005 | (W-Matrix) Refresh Update Hash Table is not valid. |
+| FAILED_LOAD_DATA | error_F006 | (W-Matrix) Fail to download Refresh Update File. |
+| FAILED_LOAD_DATA | error_F007 | (W-Matrix) WebSquare License is not valid. |
+| FAILED_LOAD_DATA | error_F009 | (W-Matrix) The app cannot be run with the current version of %s. Please update to the latest version on the Play Store and restart. |
+| FAILED_LOAD_DATA | error_F010 | (W-Matrix) Fail to unzip due to insufficient storage space. |
+| FAILED_LOAD_DATA | error_W1004 | (W-Matrix) W-Matrix License is not valid. |
+| FAILED_LOAD_DATA | error_W1005 | (W-Matrix) Fail to create WebView. |
+| FAILED_LOAD_DATA | error_O1000 | (W-Matrix) An error occurred while setting offline mode. |
+| FAILED_LOAD_DATA | error_O1001 | (W-Matrix) There is no W-Matrix setup to use offline mode. |
 
 ### Version
 This code is used to identify the version status of either no update, force or soft update
