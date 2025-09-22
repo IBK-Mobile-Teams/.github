@@ -4,3 +4,8 @@
 ```javascript
 Android.requestNative(id, requestData, callBackName)
 ```
+
+## Request to IOS
+```javascript
+
+```
