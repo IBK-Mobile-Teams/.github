@@ -1,0 +1,5 @@
+Pengembangan fitur QRIS Cross Border di layanan Mobile Banking Bank IBK Indonesia memiliki beberapa tujuan utama:
+•	Meningkatkan Kenyamanan dan Kemudahan Nasabah: Memberikan fleksibilitas kepada nasabah untuk melakukan transaksi pembayaran digital lintas negara secara efisien dan aman menggunakan aplikasi Mobile Banking yang sudah familiar.
+•	Memperkuat Daya Saing Bank: Menempatkan Bank IBK Indonesia sebagai pemain kunci di pasar pembayaran digital lintas batas, sekaligus meningkatkan loyalitas nasabah dengan menyediakan solusi inovatif yang relevan dengan kebutuhan global.
+•	Mendukung Digitalisasi Pembayaran Nasional: Berkontribusi pada akselerasi inklusi ekonomi dan keuangan digital sesuai dengan Blueprint Sistem Pembayaran Indonesia (BSPI) 2025 dari Bank Indonesia, yang bertujuan untuk mendukung stabilitas dan pertumbuhan ekonomi berkelanjutan.
+•	Perluasan Jangkauan Layanan: Memungkinkan nasabah Bank IBK Indonesia bertransaksi di negara-negara target (Singapura, Malaysia, Thailand, Jepang, China, Korea Selatan) secara langsung melalui aplikasi bank.
