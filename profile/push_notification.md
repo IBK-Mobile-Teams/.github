@@ -192,3 +192,69 @@ This process is initiated when the user opens the notification screen. The appli
        }
        ```
 
+## Notification Pending Intent
+
+<img width="4946" height="2369" alt="image" src="https://github.com/user-attachments/assets/b2eb723e-e07b-4694-9e34-d36c06c7c1b1" />
+
+This flow outlines the logic for handling a user tap on a push notification from the device's system tray. The app's behavior is determined by the content of the notification's data payload, specifically the presence of an externalLink or an internalLink.
+___
+
+### # Push Notification Payload
+The behavior of the pending intent is controlled by the following key-value pairs in the push notification's data payload.
+
+| Key |	Type |	Description |
+| :--- | :--- | :--- |
+| `title` |	String |	The main title of the notification. |
+| `body` |	String |	The descriptive text of the notification. |
+| `imgUrl` |	String |	An optional URL for an image to be displayed in the notification. Can be `null`. |
+| `externalLink` |	String |	A URL to an external website. If present, this takes priority. |
+| `internalLink` |	String |	An app link (deep link) to a specific screen within the app. |
+
+
+### # Example 1: External Link (e.g., Promotion)
+This payload will direct the user to a webpage.
+```json
+{
+  "userId": "derydev7",
+  "title": "Ayo Pake Qris Bank IBK",
+  "body": "Cashback hingga Rp 50 Ribu dengan QRS Bank IBK",
+  "imgUrl": "https://www.image.example.com",
+  "notificationType": "002",
+  "externalLink": "https://www.external.link",
+  "internalLink": ""
+}
+```
+
+### # Example 2: Internal Link (e.g., Transaction)
+This payload will direct the user to a specific screen inside the app.
+```json
+{
+  "userId": "derydev7",
+  "title": "Bayar",
+  "body": "Berhasil bayar Qris Rp50.000 di FM Wisma GKB",
+  "imgUrl": null,
+  "notificationType": "001",
+  "externalLink": "",
+  "internalLink": "applink://history/notification"
+}
+```
+### # User Interaction Flow
+When a user taps on the notification, the application executes the following sequence:
+1. **Check for External Link**: The app first checks if the `externalLink` field in the payload contains a valid URL.
+   - **If YES**: The application opens the URL in an external web browser. The flow ends here.
+   - **If NO**: The application proceeds to the next step.
+3. **Check for Internal Link**: If there is no external link, the app checks if the `internalLink` field contains a valid app link.
+   - **If YES**: The app prepares to navigate to the specified internal screen and proceeds to check the user's login status.
+   - **If NO**: (Default action) The app will likely just open to its main screen.
+5. **Check Authentication Status**: Before navigating to an internal link, the app verifies if the user is currently logged in.
+   - **If Already Logged In**: The user is taken directly to the page specified in the `internalLink` (e.g., the Notification History Page).
+   - **If Not Logged In**: The user must log in before being redirected. The app initiates the following login flow.
+___
+### # Authentication Flow for Redirection
+If a user is not logged in and taps a notification with an `internalLink`:
+1. The user is first directed to the **Login Page**.
+2. The app attempts to retrieve credentials for Fast Login based on the `userId`.
+3. A login request is made using the Fast Login mechanism.
+4. **Check Login Success**:
+   - **If Successful**: The user is redirected from the login screen to the original target page specified in the `internalLink`.
+   - **If Failed**: The user remains on the Login Page to attempt a manual login.
