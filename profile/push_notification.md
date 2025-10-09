@@ -45,3 +45,150 @@ A successful request will return a JSON object indicating the token was saved
 
 ### # Flow
 <img width="2528" height="1632" alt="image" src="https://github.com/user-attachments/assets/4b63c364-3706-48c8-b62c-cb4c8a392f37" />
+
+## Get Notification History
+
+### # Infographics
+
+<img width="4193" height="2660" alt="image" src="https://github.com/user-attachments/assets/64d2b6a3-de04-4277-b114-ce26844ab667" />
+
+1. Notification Count
+2. Gouping Title Date
+3. Transaction Item IN
+4. Transaction Item OUT
+5. Un-Read Notification Transaction Item
+6. Read Notification Transaction Item
+7. Un-Read Promotion Notification Identify
+8. Promotion Item
+9. Un-Read Information Notification Identify
+10. Un-Read Notification Information Item
+11. Read Notification Information Item
+
+
+### # Flow
+This process is initiated when the user opens the notification screen. The application fetches a paginated list of notifications from the server to display to the user
+
+### # API Endpoint
+`GET /v1/common/inquiry/pushnotif`
+
+#### - Headers
+| Key | Value | Description |
+| :--- | :--- | :--- |
+| userId | derydev7 (example)	| The ID of the logged-in user.|
+
+#### - Query Parameters
+| Parameter	| Type | Description | Default |
+| :--- | :--- | :--- | :--- |
+| page | Integer | The page number for pagination, starting with `1`. | 1 |
+| size | Integer | The number of notification items to fetch per page. | 20 |
+| type | String | The category of notification to fetch. Valid values are `TRX`, `PROMO`, or `INFO`. | - |
+
+#### - Response
+```json
+{
+    "status": "Success",
+    "code": "00",
+    "data": [
+        {
+            "title": "Incoming Funds",
+            "desc": "(CANCEL) KREDIT Rp.45,498.96 pada rek XX0001 tgl 23/09/2025 pkl 16:25:15, Saldo Rp.4,215,637,822.13. IBK Call 1500978",
+            "date": "20250923",
+            "time": "162515",
+            "type": "TRX_IN",
+            "id": 12,
+            "read": false,
+            "imageUrl": "https://www.example.com/image",
+            "externalUrl": "https://www.example.com"
+        },
+        {
+            "title": "Outgoing Funds",
+            "desc": "DEBIT Rp.45,498.96 pada rek XX0001 tgl 23/09/2025 pkl 16:25:13, Saldo Rp.4,215,592,323.17. IBK Call 1500978",
+            "date": "20250923",
+            "time": "162513",
+            "type": "TRX_OUT",
+            "id": 11,
+            "read": false,
+            "imageUrl": "https://www.example.com/image",
+            "externalUrl": "https://www.example.com"
+        }
+    ]
+}
+```
+#### - Field Descriptions
+| Field |	Type | Description |
+| :--- | :--- | :--- |
+| `title` |	String | The title of the notification |
+| `desc` |	String | The detailed description of the notification.|
+| `date` |	String | The date of the notification in `yyyyMMdd` format.|
+| `time` |	String | The date of the notification in `yyyyMMdd` format.|
+| `type` |	String | The type of notification. Can be `TRX_IN`, `TRX_OUT`, `PROMO`, or `INFO`.|
+| `id` |	Integer | A unique identifier for the notification.|
+| `read` |	Boolean | A flag indicating if the notification has been read. `false` for unread, `true` for read.|
+| `imageUrl` |	String | A URL for an image, used primarily for promo notifications. Can be an app link.|
+| `externalUrl` |	String | A URL to an external website, used for clickable promo items.|
+
+### # UI Implementation Details
+<img width="1488" height="1112" alt="image" src="https://github.com/user-attachments/assets/f5a703f6-7afe-41d9-a012-1a6874e6f4f4" />
+
+1. Notification Grouping & Display
+   - Transactions (`TRX`)
+     
+     <img width="1611" height="863" alt="image" src="https://github.com/user-attachments/assets/07cca62b-ec18-45b7-b035-56dd00484daf" />
+     
+     - Notifications are grouped by date `[2]`, using the `date` field from the API response. The format should be converted from `yyyyMMdd` to a more readable format like `d MMMM yyyy`
+     - The type field determines the transaction icon and title `[3][4]`:
+       - `TRX_IN`: Represents incoming funds ("Dana Masuk").
+       - `TRX_OUT`: Represents outgoing funds ("Dana Keluar").
+     - The visual style for transaction items differs based on the read status `[5][6]`:
+       - `read: false`: Indicates an unread notification (e.g., highlighted background).
+       - `read: true`: Indicates a read notification (e.g., standard background).
+   - Promotions (`PROMO`)
+  
+     <img width="1231" height="628" alt="image" src="https://github.com/user-attachments/assets/81a0379a-4ca1-4363-923e-33a31aa905af" />
+
+     - Displayed in the "Promosi & Informasi" tab.
+     - Notification Identifier `[7]` will show circle dot in top end of Promo Tab if its `type` is `PROMO` and `read` is `false`.
+     - An item is shown if its `type` is `PROMO` and `imageUrl` contains a valid image URL`[8]`.
+     - The item is clickable, opening the `externalUrl` in a web view or browser, if the URL is valid and not blank.
+   - Information (`INFO`)
+
+     <img width="1231" height="876" alt="image" src="https://github.com/user-attachments/assets/562beec7-6b0b-4e7b-a151-f0052a0eb162" />
+
+     - Displayed in the "Promosi & Informasi" tab under the "Informasi" sub-tab.
+     - Notification Identifier `[9]` will show circle dot in top end of Promo Tab if its `type` is `PROMO` and `read` is `false`.
+     - An item is shown if its `type` is `INFO`, displaying only the `title` and `decs` fields.
+     - The visual style for transaction items differs based on the read status `[10][11]`:
+       - `read: false`: Indicates an unread notification (e.g., highlighted background).
+       - `read: true`: Indicates a read notification (e.g., standard background).
+3. Unread Notification Counts
+   
+   <img width="2054" height="551" alt="image" src="https://github.com/user-attachments/assets/bbe4332e-53ca-4fdb-b54b-f2dcaaca275d" />
+   
+   Unread counts are displayed as badges on the tabs and are calculated by filtering the notification list where `read` is `false`.
+   - **Transaction Count**: The total count of items where `read == false` and the type is either `TRX_IN` or `TRX_OUT`.
+   - **Promo & Info Count**: The total count of items where `read == false` and the `type` is either `PROMO` or `INFO`. A red dot indicator also appears next to the "Promosi" or "Informasi"  tabs if there are unread items of that specific type.
+   
+5. Marking Notifications as Read
+   
+   To ensure the unread counts are updated correctly, the app must call an API to mark notifications as read.
+   - **Bulk Update (On Back Press)**: When the user navigates away from the notification screen, the app should make a call to update all notifications for the viewed tab to "read".
+     - API: `POST v1/common/update/pushnotif/read`
+     - Body:
+       ```json
+       {
+            "pushType": "TRX",
+            "isSingle": false
+       }
+       ```
+   - **Single Update (On Click)**: When a user clicks on a single promo item, a specific API call is made to mark only that item as read.
+     - API: `POST v1/common/update/pushnotif/read`
+     - Body:
+       ```json
+       {
+            "id": 3,
+            "date": "20250923",
+            "pushType": "PROMO", 
+            "isSingle": true
+       }
+       ```
+
